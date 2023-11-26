@@ -3,20 +3,20 @@ version: '3'
 services:
   gigachat-api:
     container_name: gigachat-api
-    build: ./giga-api
+    build: ./sber-gigachat-api/
     
     expose:
       - 5000
     volumes:
-      - ./giga-api:/app
+      - ./sber-gigachat-api:/app
 
   rest-gateway-api:
     container_name: sber-rest-api
-    build: rest-api-service
+    build: sber-rest-api
     expose:
       - 5005
     volumes:
-      - ./rest-api-service:/app
+      - ./sber-rest-api:/app
     command: bash -c "python app.py & python econ_service.py"
 
   sber-vk-api:
@@ -38,4 +38,12 @@ services:
       - 8000:4567
     restart: unless-stopped
 
+  sber-validator:
+    container_name: sber-validator
+    build: ./sbervalidator
+    expose:
+      - 4242
+
+  # sber-frontend:
+  #   container_name: dber
 

@@ -1,5 +1,5 @@
 ## Запуск
-- `git clone --recurse-submodules `
+- `git clone --recurse-submodules git@github.com:Kronverkskie-kisiki/sber-optimizer.git`
 - `cd sber-assembly`
 - `docker-compose build`
 - `docker-compose up`
