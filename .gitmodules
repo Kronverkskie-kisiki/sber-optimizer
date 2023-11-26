@@ -1,15 +1,15 @@
 [submodule "sberfrontend"]
 	path = sberfrontend
-	url = git@github.com:Kronverkskie-kisiki/sberfrontend.git
+	url = https://github.com/Kronverkskie-kisiki/sberfrontend.git
 [submodule "sbervalidator"]
 	path = sbervalidator
-	url = git@github.com:Kronverkskie-kisiki/sbervalidator.git
+	url = https://github.com/Kronverkskie-kisiki/sbervalidator.git
 [submodule "sber-rest-api"]
 	path = sber-rest-api
-	url = git@github.com:Kronverkskie-kisiki/sber-rest-api.git
+	url = https://github.com/Kronverkskie-kisiki/sber-rest-api.git
 [submodule "sber-vk-api"]
 	path = sber-vk-api
-	url = git@github.com:Kronverkskie-kisiki/sber-vk-api.git
+	url = https://github.com/Kronverkskie-kisiki/sber-vk-api.git
 [submodule "sber-gigachat-api"]
 	path = sber-gigachat-api
-	url = git@github.com:Kronverkskie-kisiki/sber-gigachat-api.git
+	url = https://github.com/Kronverkskie-kisiki/sber-gigachat-api.git
