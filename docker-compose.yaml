@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  gigachat-api:
+    container_name: gigachat-api
+    build: ./giga-api
+    
+    expose:
+      - 5000
+    volumes:
+      - ./giga-api:/app
+
+  rest-gateway-api:
+    container_name: sber-rest-api
+    build: rest-api-service
+    expose:
+      - 5005
+    volumes:
+      - ./rest-api-service:/app
+    command: bash -c "python app.py & python econ_service.py"
+
+  sber-vk-api:
+    container_name: sber-vk-api
+    build: sber-vk-api
+    expose:
+      - 8080
+    # ports:
+    #   - "8080:8080"
+    command: "java -jar social_media_service-0.0.1-SNAPSHOT.jar"
+
+  sber-proxy:
+    container_name: sber-proxy
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./sberfrontend/dist:/sberfrontend/dist
+    ports:
+      - 8000:4567
+    restart: unless-stopped
+
+
