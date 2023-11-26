@@ -4,29 +4,30 @@ services:
   gigachat-api:
     container_name: gigachat-api
     build: ./sber-gigachat-api/
-    
-    expose:
-      - 5000
+    # expose:
+    #   - 5000
     volumes:
       - ./sber-gigachat-api:/app
+    network_mode: internal_net
 
   rest-gateway-api:
     container_name: sber-rest-api
     build: sber-rest-api
-    expose:
-      - 5005
+    # expose:
+    #   - 5005
     volumes:
       - ./sber-rest-api:/app
     command: bash -c "python app.py & python econ_service.py"
+    network_mode: internal_net
 
   sber-vk-api:
     container_name: sber-vk-api
     build: sber-vk-api
-    expose:
-      - 8080
+    # expose: - 8080
     # ports:
     #   - "8080:8080"
     command: "java -jar social_media_service-0.0.1-SNAPSHOT.jar"
+    network_mode: internal_net
 
   sber-proxy:
     container_name: sber-proxy
@@ -34,15 +35,17 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./sberfrontend/dist:/sberfrontend/dist
-    ports:
-      - 8000:4567
+    # ports:
+    #   - 8000:4567
     restart: unless-stopped
+    network_mode: internal_net
 
   sber-validator:
     container_name: sber-validator
     build: ./sbervalidator
-    expose:
-      - 4242
+    # expose:
+    #   - 4242
+    network_mode: internal_net
 
   sber-frontend:
     container_name: sber-frontend
@@ -52,4 +55,3 @@ services:
     volumes: 
       - ./sberfrontend/:/app/sberfrontend/
     command: "yarn install && yarn build"
-
